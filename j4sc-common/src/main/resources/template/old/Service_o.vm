@@ -1,0 +1,149 @@
+package $
+
+{package_name}.rest.api;
+
+import ${package_name}.dao.entity.${model};
+
+/**
+ * @Description: ${model} Service接口
+ * @Author: LongRou
+ * @CreateDate: ${ctime}.
+ * @Version: 1.0
+ **/
+public interface ${model}Service  {
+    @Override
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    boolean insert(${model} entity);
+
+    @Override
+    @RequestMapping(value = "/insertAllColumn", method = RequestMethod.POST)
+    boolean insertAllColumn(${model} entity);
+
+    @Override
+    @RequestMapping(value = "/insertBatch", method = RequestMethod.POST)
+    boolean insertBatch(List<${model}> entityList);
+
+    @Override
+    @RequestMapping(value = "/insertBatchBySize", method = RequestMethod.POST)
+    boolean insertBatch(List<${model}> entityList, int batchSize);
+
+    @Override
+    @RequestMapping(value = "/insertOrUpdateBatch", method = RequestMethod.POST)
+    boolean insertOrUpdateBatch(List<${model}> entityList);
+
+    @Override
+    @RequestMapping(value = "/insertOrUpdateBatchBySize", method = RequestMethod.POST)
+    boolean insertOrUpdateBatch(List<${model}> entityList, int batchSize);
+
+    @Override
+    @RequestMapping(value = "/insertOrUpdateAllColumnBatch", method = RequestMethod.POST)
+    boolean insertOrUpdateAllColumnBatch(List<${model}> entityList);
+
+    @Override
+    @RequestMapping(value = "/insertOrUpdateAllColumnBatchBySize", method = RequestMethod.POST)
+    boolean insertOrUpdateAllColumnBatch(List<${model}> entityList, int batchSize);
+
+    @Override
+    @RequestMapping(value = "/deleteById", method = RequestMethod.DEL)
+    boolean deleteById(Serializable id);
+
+    @Override
+    @RequestMapping(value = "/deleteByMap", method = RequestMethod.DEL)
+    boolean deleteByMap(Map<String, Object> columnMap);
+
+    @Override
+    @RequestMapping(value = "/delete", method = RequestMethod.DEL)
+    boolean delete(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/deleteBatchIds", method = RequestMethod.DEL)
+    boolean deleteBatchIds(Collection<? extends Serializable> idList);
+
+    @Override
+    @RequestMapping(value = "/updateById", method = RequestMethod.PUT)
+    boolean updateById(${model} entity);
+
+    @Override
+    @RequestMapping(value = "/updateAllColumnById", method = RequestMethod.PUT)
+    boolean updateAllColumnById(${model} entity);
+
+    @Override
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    boolean update(${model} entity, Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/updateBatchById", method = RequestMethod.PUT)
+    boolean updateBatchById(List<${model}> entityList);
+
+    @Override
+    @RequestMapping(value = "/updateBatchById", method = RequestMethod.PUT)
+    boolean updateBatchById(List<${model}> entityList, int batchSize);
+
+    @Override
+    @RequestMapping(value = "/updateAllColumnBatchById", method = RequestMethod.PUT)
+    boolean updateAllColumnBatchById(List<${model}> entityList);
+
+    @Override
+    @RequestMapping(value = "/updateAllColumnBatchByIdBySize", method = RequestMethod.PUT)
+    boolean updateAllColumnBatchById(List<${model}> entityList, int batchSize);
+
+    @Override
+    @RequestMapping(value = "/insertOrUpdate", method = RequestMethod.POST)
+    boolean insertOrUpdate(${model} entity);
+
+    @Override
+    @RequestMapping(value = "/insertOrUpdateAllColumn", method = RequestMethod.POST)
+    boolean insertOrUpdateAllColumn(${model} entity);
+
+    @Override
+    @RequestMapping(value = "/Serializable", method = RequestMethod.GET)
+    ${model} selectById(Serializable id);
+
+    @Override
+    @RequestMapping(value = "/selectBatchIds", method = RequestMethod.GET)
+    List<${model}> selectBatchIds(Collection<? extends Serializable> idList);
+
+    @Override
+    @RequestMapping(value = "/selectByMap", method = RequestMethod.GET)
+    List<${model}> selectByMap(Map<String, Object> columnMap);
+
+    @Override
+    @RequestMapping(value = "/selectOne", method = RequestMethod.GET)
+    ${model} selectOne(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectMap", method = RequestMethod.GET)
+    Map<String, Object> selectMap(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectObj", method = RequestMethod.GET)
+    Object selectObj(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectCount", method = RequestMethod.GET)
+    int selectCount(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectList", method = RequestMethod.GET)
+    List<${model}> selectList(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectPage", method = RequestMethod.GET)
+    Page<${model}> selectPage(Page<${model}> page);
+
+    @Override
+    @RequestMapping(value = "/selectMaps", method = RequestMethod.GET)
+    List<Map<String, Object>> selectMaps(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectObjs", method = RequestMethod.GET)
+    List<Object> selectObjs(Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectMapsPage", method = RequestMethod.GET)
+    Page<Map<String, Object>> selectMapsPage(Page page, Wrapper<${model}> wrapper);
+
+    @Override
+    @RequestMapping(value = "/selectPage", method = RequestMethod.GET)
+    Page<${model}> selectPage(Page<${model}> page, Wrapper<${model}> wrapper);
+}

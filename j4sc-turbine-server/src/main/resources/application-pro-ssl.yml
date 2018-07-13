@@ -1,0 +1,33 @@
+eureka:
+  instance:
+    statusPageUrlPath: /actuator/info
+    healthCheckUrlPath: /actuator/health
+    secure-port-enabled: true
+    secure-port: 8763
+    non-secure-port-enabled: false
+    # docker 部署开启
+    prefer-ip-address: true
+    #ip-address: 127.0.0.1
+  client:
+    serviceUrl:
+      defaultZone: http://${EUREKA_HOST:172.18.147.199}:${EUREKA_PORT:8761}/eureka/
+server:
+  port: 8763
+  ssl:
+    client-auth: want
+    key-store: classpath:214658546420890.pfx
+    key-store-password: 214658546420890
+    key-store-type: PKCS12
+spring:
+  application:
+    name: j4sc-turbine-server
+#  rabbitmq:
+#    host: localhost
+#    port: 5672
+#    username: guest
+#    password: guest
+turbine:
+  app-config: j4sc-gateway-server,j4sc-auth-server,bjt-system-server,bjt-user-server,bjt-api-server,bjt-carpark-server,bjt-park-server
+  aggregator:
+    cluster-config: default
+  cluster-name-expression: new String("default")

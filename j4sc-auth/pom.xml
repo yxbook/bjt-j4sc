@@ -1,0 +1,32 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.j4sc</groupId>
+    <artifactId>j4sc-auth</artifactId>
+    <version>1.0.0</version>
+    <modules>
+        <module>j4sc-auth-common</module>
+        <module>j4sc-auth-dao</module>
+        <module>j4sc-auth-server</module>
+        <module>j4sc-auth-rest</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>j4sc-auth</name>
+    <url>http://maven.apache.org</url>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>9</maven.compiler.source>
+        <maven.compiler.target>9</maven.compiler.target>
+        <maven.compiler.compilerVersion>9</maven.compiler.compilerVersion>
+    </properties>
+    <distributionManagement>
+        <repository>
+            <id>j4sc-repo</id>
+            <name>Nexus Release Repository</name>
+            <url>http://localServer:9999/repository/maven-releases/</url>
+        </repository>
+    </distributionManagement>
+</project>

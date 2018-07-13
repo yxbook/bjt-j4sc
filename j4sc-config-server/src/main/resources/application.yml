@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/jxj2118/j4sc-config.git
+          search-paths: dev
+          username: jxj2118
+          password: wbgsnwdmm
+  application:
+      name: j4sc-config-server
+server:
+    port: 9002 #启动端口

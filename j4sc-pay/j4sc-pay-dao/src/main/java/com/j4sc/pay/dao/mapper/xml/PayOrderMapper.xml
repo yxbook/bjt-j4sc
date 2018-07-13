@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.j4sc.pay.dao.mapper.PayOrderMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.j4sc.pay.dao.entity.PayOrder">
+        <id column="order_id" property="orderId" />
+        <result column="system_id" property="systemId" />
+        <result column="user_id" property="userId" />
+        <result column="username" property="username" />
+        <result column="ctime" property="ctime" />
+        <result column="money" property="money" />
+        <result column="name" property="name" />
+        <result column="info" property="info" />
+        <result column="info_self" property="infoSelf" />
+        <result column="type" property="type" />
+        <result column="state" property="state" />
+        <result column="notify_url" property="notifyUrl" />
+        <result column="notify_json" property="notifyJson" />
+        <result column="channel" property="channel" />
+    </resultMap>
+
+</mapper>

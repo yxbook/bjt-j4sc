@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.j4sc</groupId>
+    <artifactId>j4sc</artifactId>
+    <version>1.0.0</version>
+    <modules>
+        <module>j4sc-common</module>
+        <module>j4sc-service-server</module>
+        <module>j4sc-config-server</module>
+        <module>j4sc-turbine-server</module>
+        <module>j4sc-gateway-server</module>
+        <module>j4sc-auth</module>
+        <module>j4sc-oss</module>
+        <module>j4sc-pay</module>
+        <module>j4sc-system</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>j4sc</name>
+    <url>http://www.j4sc.com</url>
+
+</project>
