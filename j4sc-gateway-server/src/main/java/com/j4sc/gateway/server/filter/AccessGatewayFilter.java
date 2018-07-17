@@ -18,6 +18,8 @@ import com.j4sc.gateway.server.client.AuthKeyClient;
 import com.j4sc.gateway.server.client.BjtSystemLogClient;
 import com.j4sc.gateway.server.client.BjtUserApiClient;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -66,9 +68,11 @@ public class AccessGatewayFilter implements GlobalFilter {
     @Autowired
     private AuthKeyClient authKeyClient;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(AccessGatewayFilter.class);
+
     @Override
     public Mono<Void> filter(ServerWebExchange serverWebExchange, GatewayFilterChain gatewayFilterChain) {
-        System.out.println("check token and user permission....");
+        LOGGER.info("Gateway Start >>>>: check token and user permission....");
         ServerHttpRequest request = serverWebExchange.getRequest();
         final String requestUri = request.getPath().pathWithinApplication().value();
         final String method = request.getMethod().toString();
@@ -85,8 +89,8 @@ public class AccessGatewayFilter implements GlobalFilter {
                 final URI uri = requiredAttribute.size()>1? iterator.next():_uri;
                 host = uri.getHost();
             }
-        }catch (IllegalArgumentException e){
-
+        }catch (Throwable e){
+            LOGGER.error("AccessGatewayFilter.serverWebExchange.getRequiredAttribute出现异常:", e.getMessage());
         }
 
         if (host.equals("j4sc-auth-server")){
@@ -100,7 +104,7 @@ public class AccessGatewayFilter implements GlobalFilter {
             try {
                 user = getJWTUser(request, mutate);
             }catch (Exception e){
-                System.out.println("admin用户Token过期异常");
+                LOGGER.error("AccessGatewayFilter-【j4sc-auth-server】-admin用户Token过期异常:", e.getMessage());
                 return getVoidMono(serverWebExchange, new BaseResult(BaseResultEnum.NOACCESS,"User Token Forbidden or Expired!"));
             }
             //半拦截。 -- -- -- -- - 仅拦截已注册的权限
@@ -135,7 +139,7 @@ public class AccessGatewayFilter implements GlobalFilter {
                 try {
                     user = getJWTUser(request, mutate);
                 }catch (Exception e){
-                    System.out.println("appSystem用户Token过期异常");
+                    LOGGER.error("AccessGatewayFilter-【bjt-api-server】-appSystem用户Token过期异常:", e.getMessage());
                     return getVoidMono(serverWebExchange, new BaseResult(BaseResultEnum.NOACCESS,"User Token Forbidden or Expired!"));
                 }
                 //获取权限信息 - 全拦截 3号系统
@@ -152,7 +156,7 @@ public class AccessGatewayFilter implements GlobalFilter {
                 try {
                     user = getAppJWTUser(request, mutate);
                 }catch (Exception e){
-                    System.out.println("appUser用户Token过期异常");
+                    LOGGER.error("AccessGatewayFilter-appUser用户Token过期异常:", e.getMessage());
                     return getVoidMono(serverWebExchange, new BaseResult(BaseResultEnum.NOACCESS,"User Token Forbidden or Expired!"));
                 }
                 //获取权限信息 - 全拦截
@@ -170,7 +174,7 @@ public class AccessGatewayFilter implements GlobalFilter {
             try {
                 user = getAppJWTUser(request, mutate);
             }catch (Exception e){
-                System.out.println("app用户Token过期异常");
+                LOGGER.error("AccessGatewayFilter-app用户Token过期异常:", e.getMessage());
                 return getVoidMono(serverWebExchange, new BaseResult(BaseResultEnum.NOACCESS,"User Token Forbidden or Expired!"));
             }
             mutate.header("userId",user.getId());
